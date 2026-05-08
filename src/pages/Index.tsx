@@ -12,7 +12,6 @@ import { buildSteps, computeOp, type C, type Op } from "@/lib/complex";
 const Index = () => {
   const [a, setA] = useState<C>({ re: 3, im: 2 });
   const [b, setB] = useState<C>({ re: 1, im: 4 });
-  const [op, setOp] = useState<Op>("add");
   const [activeOp, setActiveOp] = useState<Op>("add");
   const [showPlot, setShowPlot] = useState(true);
   const [pulseKey, setPulseKey] = useState(0);
@@ -22,7 +21,7 @@ const Index = () => {
 
   useEffect(() => { setPulseKey((k) => k + 1); }, [result, activeOp]);
 
-  const run = (next: Op) => { setOp(next); setActiveOp(next); };
+  const run = (next: Op) => setActiveOp(next);
 
   return (
     <main className="min-h-screen px-4 py-10 md:py-14">
