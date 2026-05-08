@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { Eye, EyeOff, Play } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { ComplexInput } from "@/components/ComplexInput";
-import { OperationSelector } from "@/components/OperationSelector";
 import { OperationButtons } from "@/components/OperationButtons";
 import { ResultCard } from "@/components/ResultCard";
 import { StepsCard } from "@/components/StepsCard";
@@ -13,7 +12,6 @@ import { buildSteps, computeOp, type C, type Op } from "@/lib/complex";
 const Index = () => {
   const [a, setA] = useState<C>({ re: 3, im: 2 });
   const [b, setB] = useState<C>({ re: 1, im: 4 });
-  const [op, setOp] = useState<Op>("add");
   const [activeOp, setActiveOp] = useState<Op>("add");
   const [showPlot, setShowPlot] = useState(true);
   const [pulseKey, setPulseKey] = useState(0);
@@ -23,7 +21,7 @@ const Index = () => {
 
   useEffect(() => { setPulseKey((k) => k + 1); }, [result, activeOp]);
 
-  const run = (next: Op) => { setOp(next); setActiveOp(next); };
+  const run = (next: Op) => setActiveOp(next);
 
   return (
     <main className="min-h-screen px-4 py-10 md:py-14">
@@ -36,15 +34,6 @@ const Index = () => {
         </div>
 
         <section className="glass-card p-6 mb-6 animate-fade-up">
-          <div className="grid md:grid-cols-[1fr_auto] gap-5 items-end mb-5">
-            <OperationSelector value={op} onChange={setOp} />
-            <Button
-              onClick={() => run(op)}
-              className="h-11 rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground hover:opacity-90 hover:scale-[1.02] transition-all"
-            >
-              <Play className="w-4 h-4 mr-2" /> Ejecutar operación
-            </Button>
-          </div>
           <OperationButtons onRun={run} active={activeOp} />
         </section>
 
