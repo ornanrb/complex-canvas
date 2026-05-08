@@ -34,15 +34,6 @@ const Index = () => {
         </div>
 
         <section className="glass-card p-6 mb-6 animate-fade-up">
-          <div className="grid md:grid-cols-[1fr_auto] gap-5 items-end mb-5">
-            <OperationSelector value={op} onChange={setOp} />
-            <Button
-              onClick={() => run(op)}
-              className="h-11 rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground hover:opacity-90 hover:scale-[1.02] transition-all"
-            >
-              <Play className="w-4 h-4 mr-2" /> Ejecutar operación
-            </Button>
-          </div>
           <OperationButtons onRun={run} active={activeOp} />
         </section>
 
