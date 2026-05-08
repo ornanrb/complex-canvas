@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { Eye, EyeOff, Play } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { ComplexInput } from "@/components/ComplexInput";
-import { OperationSelector } from "@/components/OperationSelector";
 import { OperationButtons } from "@/components/OperationButtons";
 import { ResultCard } from "@/components/ResultCard";
 import { StepsCard } from "@/components/StepsCard";
