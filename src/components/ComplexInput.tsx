@@ -1,7 +1,5 @@
-import { Minus, Plus } from "lucide-react";
 import type { C } from "@/lib/complex";
 import { formatC } from "@/lib/complex";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 interface Props {
@@ -14,9 +12,6 @@ interface Props {
 export const ComplexInput = ({ label, color, value, onChange }: Props) => {
   const accent = color === "primary" ? "var(--gradient-primary)" : "var(--gradient-secondary)";
 
-  const step = (key: "re" | "im", delta: number) =>
-    onChange({ ...value, [key]: Number((value[key] + delta).toFixed(4)) });
-
   const set = (key: "re" | "im", v: string) => {
     const n = parseFloat(v);
     onChange({ ...value, [key]: Number.isFinite(n) ? n : 0 });
@@ -27,33 +22,13 @@ export const ComplexInput = ({ label, color, value, onChange }: Props) => {
       <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         {name}
       </label>
-      <div className="flex items-center gap-2">
-        <Button
-          variant="outline"
-          size="icon"
-          aria-label={`Disminuir ${name}`}
-          onClick={() => step(k, -1)}
-          className="rounded-xl shrink-0"
-        >
-          <Minus className="w-4 h-4" />
-        </Button>
-        <Input
-          type="number"
-          value={value[k]}
-          onChange={(e) => set(k, e.target.value)}
-          aria-label={`${label} ${name}`}
-          className="text-center text-lg font-mono rounded-xl h-10"
-        />
-        <Button
-          variant="outline"
-          size="icon"
-          aria-label={`Aumentar ${name}`}
-          onClick={() => step(k, 1)}
-          className="rounded-xl shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-        </Button>
-      </div>
+      <Input
+        type="number"
+        value={value[k]}
+        onChange={(e) => set(k, e.target.value)}
+        aria-label={`${label} ${name}`}
+        className="text-center text-lg font-mono rounded-xl h-10"
+      />
     </div>
   );
 
