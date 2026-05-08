@@ -70,7 +70,8 @@ export const buildSteps = (a: C, b: C, op: Op): string[] => {
   return [
     `(${formatC(a)}) · (${formatC(b)})`,
     `= ${fmtNum(ar)}·${fmtNum(br)} + ${fmtNum(ar)}·${fmtNum(bi)}i + ${fmtNum(ai)}·${fmtNum(br)}i + ${fmtNum(ai)}·${fmtNum(bi)}i²`,
-    `= (${fmtNum(ar * br)} − ${fmtNum(ai * bi)}) + (${fmtNum(ar * bi)} + ${fmtNum(ai * br)})i   [usando i² = −1]`,
+    `= ${fmtNum(ar * br)} + ${fmtNum(ar * bi)}i + ${fmtNum(ai * br)}i − ${fmtNum(ai * bi)}   [usando i² = −1]`,
+    `= (${fmtNum(ar * br)} − ${fmtNum(ai * bi)}) + (${fmtNum(ar * bi)} + ${fmtNum(ai * br)})i`,
     `= ${fmtNum(ar * br - ai * bi)} + ${fmtNum(ar * bi + ai * br)}i`,
     `= ${formatC({ re: ar * br - ai * bi, im: ar * bi + ai * br })}`,
   ];
