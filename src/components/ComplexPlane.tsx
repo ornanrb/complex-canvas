@@ -14,7 +14,7 @@ const point = (name: string, c: C, color: string) => {
   return {
     x: [0, c.re],
     y: [0, c.im],
-    mode: "lines+markers+text" as const,
+    mode: "text+lines+markers" as const,
     type: "scatter" as const,
     name: label,
     line: { color, width: 3 },
